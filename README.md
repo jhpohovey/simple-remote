@@ -4,6 +4,8 @@ A simple Python application to control a Roku TV using ECP-based commands.
 
 ## Setup
 
+0. [Download and Install Python](https://www.python.org/downloads/) (e.g., [Python 3.8.8 for Windows](https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe))
+
 1. Clone the repository:
    ```
    git clone git@github.com:jhpohovey/simple-remote.git
