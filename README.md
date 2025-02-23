@@ -133,7 +133,7 @@ To enable logging, use the `--enable-logging` flag when running the script:
 python roku_remote.py --ip <ROKU_TV_IP_ADDRESS> --enable-logging
 ```
 
-You can adjust the logging level by modifying the `basicConfig` call in the `roku_remote.py` and `remote_gui.py` files. For example, to set the logging level to `DEBUG`, use:
+You can adjust the logging level manually for further development by modifying the `basicConfig` call in the `roku_remote.py` and `remote_gui.py` files. For example, to set the logging level to `DEBUG`, use:
 ```python
 logging.basicConfig(level=logging.DEBUG)
 ```
