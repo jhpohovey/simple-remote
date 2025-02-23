@@ -147,4 +147,12 @@ By following these steps, you will be able to visualize and interact with a more
 By following these steps, you will be able to create and run a `pygame` GUI for your Roku remote application without needing to provide images. The buttons will be created programmatically.
 
 By following these steps, you will be able to create a circular power button with the power logo on it, along with other rectangular buttons for the rest of the remote functionalities.
+
+## Visual Representation
+
+Here is a basic visual representation of the remote interface:
+
+![Remote Interface](assets/remote-interface.jpg)
+
+The interface is quite rudimentary but should accomplish its purpose.
 `````
