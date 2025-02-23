@@ -9,9 +9,34 @@ A simple Python application to control a Roku TV using ECP-based commands.
    git clone git@github.com:jhpohovey/simple-remote.git
    ```
 
-2. Install the required packages:
+2. Navigate to the project directory:
    ```
-   pip3 install -r requirements.txt
+   cd simple-remote
+   ```
+
+3. Create a virtual environment:
+   - On Windows:
+     ```sh
+     python -m venv venv
+     ```
+   - On macOS and Linux:
+     ```sh
+     python3 -m venv venv
+     ```
+
+4. Activate the virtual environment:
+   - On Windows:
+     ```sh
+     venv\Scripts\activate
+     ```
+   - On macOS and Linux:
+     ```sh
+     source venv/bin/activate
+     ```
+
+5. Install the required packages:
+   ```
+   pip install -r requirements.txt
    ```
 
 ## GUI Application Usage
@@ -21,7 +46,12 @@ A simple Python application to control a Roku TV using ECP-based commands.
    python remote_gui.py --ip <ROKU_TV_IP_ADDRESS>
    ```
 
-2. Use the GUI to control the Roku TV.
+2. If no IP address is specified, the default IP address `192.168.1.100` will be used:
+   ```sh
+   python remote_gui.py
+   ```
+
+3. Use the GUI to control the Roku TV.
 
 ## Command-Line Usage
 
@@ -54,7 +84,12 @@ A simple Python application to control a Roku TV using ECP-based commands.
    ./dist/remote_gui --ip <ROKU_TV_IP_ADDRESS>
    ```
 
-4. To enable logging, add the `--enable-logging` flag:
+4. If no IP address is specified, the default IP address `192.168.1.100` will be used:
+   ```sh
+   ./dist/remote_gui
+   ```
+
+5. To enable logging, add the `--enable-logging` flag:
    ```sh
    ./dist/remote_gui --ip <ROKU_TV_IP_ADDRESS> --enable-logging
    ```
