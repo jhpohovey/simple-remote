@@ -150,9 +150,7 @@ By following these steps, you will be able to create a circular power button wit
 
 ## Visual Representation
 
-Here is a basic visual representation of the remote interface:
+Below is a basic visual representation of the remote interface. It is quite rudimentary but should accomplish its purpose.
 
 ![Remote Interface](assets/remote-interface.jpg)
 
-The interface is quite rudimentary but should accomplish its purpose.
-`````
