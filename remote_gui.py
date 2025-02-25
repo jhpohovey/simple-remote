@@ -1,44 +1,41 @@
 import pygame
 from pygame import gfxdraw
 from roku_remote import RokuRemote
-import argparse  # Add argparse import
-import logging  # Add logging import
+import argparse 
+import logging
 
 class RokuRemoteApp:
     def __init__(self, ip_address, port=8060):
-        # Initialize pygame
         pygame.init()
 
-        # Screen settings
         self.WIDTH, self.HEIGHT = 300, 600
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption("Roku Remote Interface")
 
-        # Colors
+        # arbitrary colors
         self.BLACK = (20, 20, 20)
         self.WHITE = (255, 255, 255)
         self.PURPLE = (128, 0, 128)
         self.DARK_GRAY = (50, 50, 50)
         self.RED = (200, 0, 0)
 
-        # Initialize RokuRemote
         self.remote = RokuRemote(ip_address, port)
 
-        # Input cycle state
+        # input fsm
         self.inputs = [
             "InputTuner", "InputHDMI1", "InputHDMI2", 
             "InputHDMI3", "InputHDMI4", "InputAV1"
         ]
         self.current_input_index = 0
 
-        # Text input state
+        # text input state
         self.typing = False
         self.input_text = ""
 
-        # Power state
+        # power state
         self.power_on = False
 
-        # Button positions and sizes
+        # button positions and sizes
         self.create_buttons()
 
     def create_buttons(self):
@@ -68,13 +65,6 @@ class RokuRemoteApp:
             "enter": pygame.Rect(120, 700, 40, 40),
             "find_remote": pygame.Rect(120, 750, 40, 40),
         }
-
-    def toggle_power(self):
-        if self.power_on:
-            self.remote.power_off()
-        else:
-            self.remote.power_on()
-        self.power_on = not self.power_on
 
     def draw_circle_button(self, surface, color, position, radius, border_color, border_width=2):
         pygame.gfxdraw.filled_circle(surface, *position, radius, color)
@@ -168,8 +158,9 @@ class RokuRemoteApp:
                     self.cycle_input()
                     return
             elif name == "type_input":
-                self.typing = True
-                return
+                if rect.collidepoint(pos):
+                    self.typing = True
+                    return
             else:
                 if rect.collidepoint(pos):
                     if name == "home":
@@ -224,6 +215,13 @@ class RokuRemoteApp:
             self.remote.send_command(f"Lit_{char}")
         self.input_text = ""
         self.typing = False
+
+    def toggle_power(self):
+        if self.power_on:
+            self.remote.power_off()
+        else:
+            self.remote.power_on()
+        self.power_on = not self.power_on
 
     def draw_buttons(self):
         for name, rect in self.buttons.items():
