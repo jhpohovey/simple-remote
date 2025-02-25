@@ -35,12 +35,15 @@ class RokuRemoteApp:
         self.typing = False
         self.input_text = ""
 
+        # Power state
+        self.power_on = False
+
         # Button positions and sizes
         self.create_buttons()
 
     def create_buttons(self):
         self.buttons = {
-            "power": (260, 50, 20, self.remote.power_on),
+            "power": (260, 50, 20, self.toggle_power),
             "cycle_input": pygame.Rect(170, 80, 60, 40),
             "home": pygame.Rect(120, 80, 40, 40),
             "back": pygame.Rect(60, 80, 40, 40),
@@ -65,6 +68,13 @@ class RokuRemoteApp:
             "enter": pygame.Rect(120, 700, 40, 40),
             "find_remote": pygame.Rect(120, 750, 40, 40),
         }
+
+    def toggle_power(self):
+        if self.power_on:
+            self.remote.power_off()
+        else:
+            self.remote.power_on()
+        self.power_on = not self.power_on
 
     def draw_circle_button(self, surface, color, position, radius, border_color, border_width=2):
         pygame.gfxdraw.filled_circle(surface, *position, radius, color)
@@ -307,7 +317,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Roku Remote GUI Application")
     parser.add_argument("--ip", type=str, default="192.168.50.59", help="IP address of the Roku TV (default: 192.168.1.100)")
     parser.add_argument("--port", type=int, default=8060, help="Port of the Roku TV (default: 8060)")
-    parser.add_argument("--enable-logging", action="store_true", help="Enable logging")
+    parser.add_argument("--enable_logging", action="store_true", help="Enable logging")
     args = parser.parse_args()
 
     if args.enable_logging:

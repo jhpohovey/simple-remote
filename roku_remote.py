@@ -4,14 +4,14 @@ import socket
 import re
 import argparse 
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md
 
 class RokuRemote:
-    def __init__(self, ip_address=None, port=8060):
+    def __init__(self, ip_address=None, port=8060, timeout=2):
         self.base_url = f"http://{ip_address}:{port}" if ip_address else None
+        self.timeout = timeout  # Add timeout attribute
         if ip_address:
             logger.info(f"Initialized RokuRemote with IP: {ip_address} and port: {port}")
         else:
@@ -23,7 +23,7 @@ class RokuRemote:
             return
         url = f"{self.base_url}/keypress/{command}"
         try:
-            response = requests.post(url)
+            response = requests.post(url, timeout=self.timeout)  # Add timeout parameter
             if response.status_code == 200:
                 logger.info(f"Command '{command}' sent successfully.")
             else:
@@ -195,6 +195,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Control a Roku TV using ECP-based commands.")
     parser.add_argument("--ip", type=str, help="IP address of the Roku TV")
     parser.add_argument("--port", type=int, default=8060, help="Port of the Roku TV (default: 8060)")
+    parser.add_argument("--timeout", type=int, default=2, help="Timeout for requests (default: 2 seconds)")
     parser.add_argument("--demo", action="store_true", help="Run example commands")
     parser.add_argument("--enable-logging", action="store_true", help="Enable logging")
     args = parser.parse_args()
@@ -205,7 +206,7 @@ if __name__ == "__main__":
         logging.basicConfig(level=logging.CRITICAL)
 
     if args.ip:
-        remote = RokuRemote(args.ip, args.port)
+        remote = RokuRemote(args.ip, args.port, args.timeout)
         if args.demo:
             # Example commands
             remote.power_on()
