@@ -1,12 +1,12 @@
 # Custom Roku Remote
 
-A simple Python application to control a Roku TV using ECP-based commands.
+A simple Python application to control a Roku TV using ECP-based commands. This is an on-the-side WIP, so feel free to create Issues and/or PRs as they are encountered.
 
 ## Setup
 
-0. [Download and Install Python](https://www.python.org/downloads/) (e.g., [Python 3.8.8 for Windows](https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe))
+0. [Download and Install Python](https://www.python.org/downloads/) (e.g., [Python 3.8.8 for Windows](https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe)). Also, [install git](https://git-scm.com/downloads).
 
-1. Clone the repository:
+1. Clone the repository (or download and extract the zip file):
    ```
    git clone git@github.com:jhpohovey/simple-remote.git
    ```
@@ -16,7 +16,7 @@ A simple Python application to control a Roku TV using ECP-based commands.
    cd simple-remote
    ```
 
-3. Create a virtual environment:
+3.  Create a virtual environment :
    - On Windows:
      ```sh
      python -m venv venv
@@ -26,7 +26,7 @@ A simple Python application to control a Roku TV using ECP-based commands.
      python3 -m venv venv
      ```
 
-4. Activate the virtual environment:
+4. [only if you did 3.] Activate the virtual environment:
    - On Windows:
      ```sh
      venv\Scripts\activate
@@ -37,7 +37,7 @@ A simple Python application to control a Roku TV using ECP-based commands.
      ```
 
 5. Install the required packages:
-   ```
+   ```sh
    pip install -r requirements.txt
    ```
 
@@ -45,34 +45,18 @@ A simple Python application to control a Roku TV using ECP-based commands.
 
 1. Run the script with the IP address of your Roku TV:
    ```sh
-   python remote_gui.py --ip <ROKU_TV_IP_ADDRESS>
+   python remote_gui.py --ip <ROKU_TV_IP_ADDRESS> --port <ROKU_TV_IP_PORT> 
    ```
 
-2. If no IP address is specified, the default IP address `192.168.1.100` will be used:
+2. If no IP address or Port is specified, the default IP address `192.168.50.59` and default port `8060` will be used:
    ```sh
    python remote_gui.py
    ```
+   You can also enable logging to act as troubleshooting with `--enable_logging`
 
 3. Use the GUI to control the Roku TV.
 
-## Command-Line Usage
-
-1. Run the script with the IP address of your Roku TV:
-   ```sh
-   python roku_remote.py --ip <ROKU_TV_IP_ADDRESS>
-   ```
-
-2. To run example commands, add the `--demo` flag:
-   ```sh
-   python roku_remote.py --ip <ROKU_TV_IP_ADDRESS> --demo
-   ```
-
-3. To enable logging, add the `--enable-logging` flag:
-   ```sh
-   python roku_remote.py --ip <ROKU_TV_IP_ADDRESS> --enable-logging
-   ```
-
-## Creating an Executable
+## Creating an Executable (note: untested)
 
 1. Create an executable:
    ```sh
@@ -86,7 +70,7 @@ A simple Python application to control a Roku TV using ECP-based commands.
    ./dist/remote_gui --ip <ROKU_TV_IP_ADDRESS>
    ```
 
-4. If no IP address is specified, the default IP address `192.168.1.100` will be used:
+4. If no IP address is specified, a default IP address will be used:
    ```sh
    ./dist/remote_gui
    ```
