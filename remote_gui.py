@@ -313,7 +313,7 @@ class RokuRemoteApp:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Roku Remote GUI Application")
-    parser.add_argument("--ip", type=str, default="192.168.50.59", help="IP address of the Roku TV (default: 192.168.1.100)")
+    parser.add_argument("--ip", type=str, default="192.168.50.59", help="IP address of the Roku TV (default: 192.168.50.59")
     parser.add_argument("--port", type=int, default=8060, help="Port of the Roku TV (default: 8060)")
     parser.add_argument("--enable_logging", action="store_true", help="Enable logging")
     args = parser.parse_args()
