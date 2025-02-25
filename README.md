@@ -2,6 +2,8 @@
 
 A simple Python application to control a Roku TV using ECP-based commands. This is an on-the-side WIP, so feel free to create Issues and/or PRs as they are encountered.
 
+Current support is power on/off, home, back, select+4 direction dpad, select input, pause/play, fast-forward, rewind, volume up/down/mute, channel up/down, type text to tv
+
 ## Setup
 
 0. [Download and Install Python](https://www.python.org/downloads/) (e.g., [Python 3.8.8 for Windows](https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe)). Also, [install git](https://git-scm.com/downloads).
