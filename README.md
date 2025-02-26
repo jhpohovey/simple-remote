@@ -77,7 +77,7 @@ Current support is power on/off, home, back, select+4 direction dpad, select inp
    ./dist/remote_gui
    ```
 
-5. To enable logging, add the `--enable-logging` flag:
+5. To enable logging, add the `--enable_logging` flag:
    ```sh
    ./dist/remote_gui --ip <ROKU_TV_IP_ADDRESS> --enable-logging
    ```
@@ -114,9 +114,9 @@ Add more commands as needed by extending the `RokuRemote` class.
 
 ## Enabling Logging
 
-To enable logging, use the `--enable-logging` flag when running the script:
+To enable logging, use the `--enable_logging` flag when running the script:
 ```sh
-python roku_remote.py --ip <ROKU_TV_IP_ADDRESS> --enable-logging
+python roku_remote.py --ip <ROKU_TV_IP_ADDRESS> --enable_logging
 ```
 
 You can adjust the logging level manually for further development by modifying the `basicConfig` call in the `roku_remote.py` and `remote_gui.py` files. For example, to set the logging level to `DEBUG`, use:
